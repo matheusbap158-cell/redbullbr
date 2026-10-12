@@ -1,0 +1,77 @@
+:root{
+  --fundo:#04060b;
+  --branco:#F4F6FA;
+  --suave:rgba(244,246,250,.72);
+  --vermelho:#E8121F;
+  --fonte:"Archivo","Segoe UI",system-ui,-apple-system,Arial,sans-serif;
+  --margem:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box}
+html{background:var(--fundo);color-scheme:dark;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--fundo);color:var(--branco);font-family:var(--fonte);line-height:1.4;overflow-x:hidden}
+
+/* ---------- cena com vídeo controlado pela rolagem ---------- */
+.cena{position:relative;height:400vh;height:400svh;background:var(--fundo)}
+.palco{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:var(--fundo)}
+.video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;background:var(--fundo);display:block}
+
+/* escurece só o lado do texto, para leitura, sem tocar na lata */
+.vinheta{position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(4,6,11,.72) 0%,rgba(4,6,11,.35) 30%,rgba(4,6,11,0) 46%),
+    linear-gradient(0deg,rgba(4,6,11,.55) 0%,rgba(4,6,11,0) 22%)}
+
+.texto{position:absolute;left:var(--margem);top:50%;transform:translateY(-52%);width:min(38vw,640px);will-change:opacity,transform}
+.kicker{margin:0 0 clamp(14px,2.2vh,26px);font-size:clamp(.6875rem,.9vw,.8125rem);font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--suave)}
+.kicker::before{content:"";display:inline-block;width:28px;height:2px;background:var(--vermelho);vertical-align:middle;margin-right:14px}
+.titulo{margin:0;font-weight:800;font-size:clamp(2.3rem,4.8vw,5.4rem);line-height:.94;letter-spacing:-.025em;text-transform:uppercase}
+.titulo .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.titulo .ln>span{display:block}
+/* estado inicial da entrada (a classe "anima" só existe se o JS e o gsap carregaram) */
+html.anima #kicker,html.anima #aux{opacity:0}
+html.anima .titulo .ln>span{transform:translateY(105%)}
+.aux{margin:clamp(16px,3vh,32px) 0 0;font-size:clamp(.75rem,1vw,.9375rem);font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--suave)}
+
+.indicador{position:absolute;left:50%;bottom:max(24px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.6875rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--suave);white-space:nowrap}
+.indicador i{display:block;width:1px;height:34px;background:linear-gradient(var(--branco),transparent);transform-origin:top;animation:descer 1.8s ease-in-out infinite}
+@keyframes descer{0%{transform:scaleY(0);opacity:0}30%{opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+.carregando{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:var(--fundo);z-index:5;font-size:.6875rem;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:var(--suave);transition:opacity .5s ease,visibility .5s}
+.carregando i{display:block;width:120px;height:2px;background:rgba(244,246,250,.14);position:relative;overflow:hidden}
+.carregando i::after{content:"";position:absolute;inset:0;width:40%;background:var(--vermelho);animation:varre 1.2s ease-in-out infinite}
+@keyframes varre{0%{transform:translateX(-100%)}100%{transform:translateX(260%)}}
+.carregando.fim{opacity:0;visibility:hidden;pointer-events:none}
+.carregando.aviso i{display:none}
+/* o texto fica legível por cima do poster mesmo antes do vídeo */
+.carregando.aviso{background:transparent;justify-content:flex-end;padding-bottom:max(24px,env(safe-area-inset-bottom));pointer-events:none}
+
+.reproduzir{position:absolute;right:var(--margem);bottom:max(24px,env(safe-area-inset-bottom));z-index:4;min-height:44px;padding:0 22px;border-radius:999px;border:1px solid rgba(244,246,250,.35);background:rgba(4,6,11,.55);color:var(--branco);font:inherit;font-size:.8125rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.reproduzir:hover{border-color:var(--vermelho)}
+.reproduzir:focus-visible{outline:2px solid var(--vermelho);outline-offset:3px}
+
+/* modo simples: sem vídeo preso na rolagem (movimento reduzido ou falha de carregamento) */
+.cena.simples{height:100vh;height:100svh}
+.cena.simples .palco{position:relative}
+.cena.simples .indicador{display:none}
+
+/* ---------- saída ---------- */
+.saida{min-height:70vh;min-height:70svh;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:clamp(48px,10vh,120px) var(--margem);background:var(--fundo);border-top:1px solid rgba(244,246,250,.08)}
+.saida .kicker.fixo{margin-bottom:6px}
+.saida-titulo{margin:0;font-weight:800;font-size:clamp(1.6rem,3.2vw,3rem);letter-spacing:-.02em;text-transform:uppercase}
+.nota{margin:8px 0 0;max-width:62ch;font-size:.9375rem;color:var(--suave)}
+
+/* ---------- retrato: título no alto, longe da lata ---------- */
+@media (max-aspect-ratio:1/1){
+  .texto{top:calc(max(4.5svh,12px) + env(safe-area-inset-top));transform:none;width:auto;right:var(--margem)}
+  .kicker{margin-bottom:12px}
+  .titulo{font-size:clamp(1.75rem,8.4vw,4rem)}
+  .titulo .ln{display:inline-block}
+  .vinheta{background:
+    linear-gradient(180deg,rgba(4,6,11,.72) 0%,rgba(4,6,11,.3) 26%,rgba(4,6,11,0) 40%),
+    linear-gradient(0deg,rgba(4,6,11,.6) 0%,rgba(4,6,11,0) 20%)}
+  .aux{margin-top:12px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .indicador i,.carregando i::after{animation:none}
+}

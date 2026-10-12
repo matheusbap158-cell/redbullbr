@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="google" content="notranslate">
+<meta name="theme-color" content="#04060b">
+<title>Unleash the Impossible · Concept by Connect Alpha</title>
+<meta name="description" content="Conceito independente da Connect Alpha: uma cena cinematográfica com vídeo controlado pela rolagem.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main>
+  <!-- CENA 01: o vídeo ocupa a tela e o progresso dele acompanha a rolagem -->
+  <section class="cena" id="cena" aria-labelledby="titulo">
+    <div class="palco" id="palco">
+      <video id="video" class="video" muted playsinline preload="auto" tabindex="-1" aria-hidden="true" poster="assets/poster.jpg">
+        <source src="V%C3%ADdeo/Red_Bull_can_in_studio_20261012075900.mp4" type="video/mp4">
+      </video>
+      <div class="vinheta" aria-hidden="true"></div>
+
+      <div class="texto" id="texto">
+        <p class="kicker" id="kicker">Connect Alpha Presents</p>
+        <h1 class="titulo" id="titulo"><span class="ln"><span>Unleash</span></span> <span class="ln"><span>the</span></span> <span class="ln"><span>Impossible.</span></span></h1>
+        <p class="aux" id="aux">Energy in motion.</p>
+      </div>
+
+      <div class="indicador" id="indicador" aria-hidden="true">
+        <span>Scroll to experience</span>
+        <i></i>
+      </div>
+
+      <button class="reproduzir" id="reproduzir" type="button" hidden>Reproduzir vídeo</button>
+
+      <div class="carregando" id="carregando" role="status" aria-live="polite">
+        <i aria-hidden="true"></i>
+        <span id="carregando-txt">Carregando</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- saída da cena: a página continua normalmente depois do vídeo -->
+  <section class="saida" aria-label="Fim da cena">
+    <p class="kicker fixo">Cena 01</p>
+    <p class="saida-titulo">Fim da sequência.</p>
+    <p class="nota">Conceito independente criado pela Connect Alpha para demonstrar capacidade criativa e técnica. Não é um site oficial nem foi aprovado pela Red Bull; a marca aparece apenas como referência visual.</p>
+  </section>
+</main>
+
+<noscript>
+  <style>.carregando{display:none}.cena{height:100svh}.palco{position:relative}</style>
+</noscript>
+
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script src="js/cena.js"></script>
+</body>
+</html>
