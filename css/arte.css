@@ -1,0 +1,89 @@
+/* Camada de direção de arte. Não altera a mecânica do vídeo (style.css + js/cena.js).
+   Ideias: tipografia condensada de campanha esportiva e o corte diagonal da lata como gesto gráfico. */
+:root{
+  --larg:76%;            /* largura da tipografia de exibição (eixo wdth do Archivo) */
+  --corte:clamp(26px,4.6vw,76px);
+}
+
+/* ---------- tipografia ---------- */
+.titulo,.h2,.beat,.card-frase,.assinatura b,.conecta-lista b,.palavra-fundo,.faixa-trilha span{font-stretch:var(--larg)}
+.titulo{font-size:clamp(2.5rem,5.6vw,6.2rem);line-height:.9}
+.h2{line-height:.86}
+.h2.medio{line-height:.92}
+
+/* etiqueta editorial: paralelogramo vermelho no lugar do traço reto */
+.kicker::before{width:22px;height:9px;background:var(--vermelho);transform:skewX(-38deg);margin-right:18px;vertical-align:baseline;position:relative;top:1px}
+
+/* ---------- abertura: detalhes editoriais ao redor da lata ---------- */
+.rotulo{position:absolute;margin:0;z-index:2;font-size:.6875rem;font-weight:500;letter-spacing:.34em;text-transform:uppercase;color:rgba(244,246,250,.5);pointer-events:none}
+.rotulo-v{left:calc(var(--margem) * .45);top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;white-space:nowrap}
+.rotulo-t{right:var(--margem);top:clamp(20px,3.4vh,34px)}
+.rotulo-t b{color:var(--vermelho);font-weight:800;margin-right:10px}
+.cena.simples .rotulo-v{display:none}
+
+/* ---------- corte diagonal: o gesto da lata, usado como divisor ---------- */
+.corte{position:relative;height:var(--corte);background:var(--fundo);overflow:hidden}
+.corte::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(to top right,transparent calc(50% - 1.5px),var(--vermelho) calc(50% - 1px),var(--vermelho) calc(50% + 1px),transparent calc(50% + 1.5px));
+  filter:drop-shadow(0 0 8px rgba(232,18,31,.6))}
+.corte.inverso::after{transform:scaleX(-1)}
+
+/* molduras com um canto cortado na diagonal */
+.beyond-img,.card,.energy-can,.energy-detalhe img{clip-path:polygon(0 0,calc(100% - 12%) 0,100% 7%,100% 100%,0 100%)}
+.energy-detalhe img{clip-path:polygon(0 0,100% 0,100% 100%,16% 100%,0 calc(100% - 6%))}
+
+/* ---------- entradas: títulos "saem" de uma máscara ---------- */
+html.js .h2.rv{opacity:1;transform:translateY(34%);clip-path:inset(0 0 104% 0);
+  transition:clip-path 1.05s cubic-bezier(.2,.7,.2,1) var(--d,0s),transform 1.05s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+html.js .h2.rv.in{transform:none;clip-path:inset(-10% -4% -10% -4%)}
+
+/* ---------- seção 2: atitude ---------- */
+.beyond{padding-top:calc(clamp(80px,14vh,170px) + var(--corte) * .2)}
+.beyond-img::before{content:"";position:absolute;left:0;bottom:0;z-index:2;width:34%;height:6px;background:var(--vermelho)}
+.palavra-fundo{-webkit-text-stroke:1px rgba(244,246,250,.12)}
+
+/* ---------- seção 3: ação (tamanhos variados, hierarquia editorial) ---------- */
+.card-frase{position:absolute;left:clamp(14px,1.4vw,22px);right:18%;bottom:clamp(44px,3.6vw,60px);z-index:1;margin:0;font-weight:800;font-size:clamp(1.05rem,1.6vw,1.6rem);line-height:.98;text-transform:uppercase;letter-spacing:-.01em}
+.card-leg{bottom:clamp(14px,1.4vw,22px)}
+.action-grade:hover .card img,.action-grade:focus-within .card img{filter:brightness(.55) saturate(.7)}
+.action-grade .card:hover img,.action-grade .card:focus-within img{filter:none}
+.card img{transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .5s ease}
+.card:hover .card-leg i{transform:translateX(4px)}
+.card-leg i{display:inline-block;transition:transform .3s ease}
+
+.action.h-scroll .card:nth-child(1){height:min(74svh,800px)}
+.action.h-scroll .card:nth-child(2){height:min(52svh,570px)}
+.action.h-scroll .card:nth-child(3){height:min(64svh,700px)}
+.action.h-scroll .card:nth-child(4){height:min(56svh,610px)}
+.action.h-scroll .acao-contador{top:clamp(76px,10vh,110px);font-stretch:var(--larg)}
+
+/* ---------- seção 4: energia ---------- */
+.energy{overflow:hidden}
+.energy::before{content:"";position:absolute;left:50%;top:-8%;width:min(34vw,520px);height:116%;transform:translateX(-50%) skewX(-14deg);
+  background:linear-gradient(180deg,rgba(42,107,255,0),rgba(42,107,255,.2) 38%,rgba(42,107,255,.2) 62%,rgba(42,107,255,0));pointer-events:none}
+.energy-texto,.energy-can,.energy-detalhe{position:relative;z-index:1}
+.energy .palavra-fundo{left:auto;right:-1vw;bottom:auto;top:4%;writing-mode:horizontal-tb}
+
+/* ---------- encerramento ---------- */
+.fecho .h2.grande{font-size:clamp(4.4rem,18vw,17rem)}
+.fecho::after{content:"";position:absolute;right:0;bottom:0;width:min(46vw,720px);height:7px;background:var(--vermelho);box-shadow:0 0 28px rgba(232,18,31,.55);clip-path:polygon(7% 0,100% 0,100% 100%,0 100%)}
+
+/* ---------- convite ---------- */
+.conecta-lista li{position:relative;padding-left:28px}
+.conecta-lista li::before{content:"";position:absolute;left:0;top:30px;width:12px;height:6px;background:var(--vermelho);transform:skewX(-38deg)}
+
+/* ---------- celular ---------- */
+@media (max-width:760px){
+  .rotulo-v,.rotulo-t{display:none}
+  .card-frase{right:10%;font-size:1rem}
+  .beyond-img,.card,.energy-can{clip-path:polygon(0 0,calc(100% - 10%) 0,100% 5%,100% 100%,0 100%)}
+}
+@media (max-aspect-ratio:1/1){
+  /* em retrato o título ocupa o alto: os rótulos laterais saem para não disputar com ele */
+  .rotulo-v,.rotulo-t{display:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html.js .h2.rv{opacity:1;transform:none;clip-path:none;transition:none}
+  .card img{transition:none}
+}

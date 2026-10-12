@@ -18,12 +18,21 @@
       var i = irmaos.indexOf(el);
       if (i > 0) el.style.setProperty('--d', (i * 0.09).toFixed(2) + 's');
     });
+    // títulos usam máscara (clip-path), que o IntersectionObserver trata como "invisível":
+    // por isso observamos o contêiner deles e revelamos o título junto
+    var porAlvo = new Map();
     var io = new IntersectionObserver(function (itens) {
       itens.forEach(function (it) {
-        if (it.isIntersecting) { it.target.classList.add('in'); io.unobserve(it.target); }
+        if (!it.isIntersecting) return;
+        (porAlvo.get(it.target) || []).forEach(function (el) { el.classList.add('in'); });
+        io.unobserve(it.target);
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
-    rv.forEach(function (el) { io.observe(el); });
+    rv.forEach(function (el) {
+      var alvo = el.classList.contains('h2') ? el.parentNode : el;
+      if (!porAlvo.has(alvo)) { porAlvo.set(alvo, []); io.observe(alvo); }
+      porAlvo.get(alvo).push(el);
+    });
   }
 
   // ---------- porcentagem de carregamento do vídeo ----------
