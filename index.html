@@ -12,8 +12,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&display=swap">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/secoes.css">
 </head>
 <body>
+<script>document.documentElement.classList.add('js')</script>
+<a class="pular" href="#beyond">Skip to content</a>
+
+<header class="topo" id="topo">
+  <a class="topo-marca" href="#cena" data-topo>Connect <span>Alpha</span></a>
+  <nav class="topo-nav" aria-label="Sections">
+    <a href="#beyond">Beyond</a>
+    <a href="#action">Action</a>
+    <a href="#energy">Energy</a>
+  </nav>
+</header>
 
 <main>
   <!-- CENA 01: o vídeo ocupa a tela e o progresso dele acompanha a rolagem -->
@@ -44,13 +56,87 @@
     </div>
   </section>
 
-  <!-- saída da cena: a página continua normalmente depois do vídeo -->
-  <section class="saida" aria-label="Fim da cena">
-    <p class="kicker fixo">Cena 01</p>
-    <p class="saida-titulo">Fim da sequência.</p>
-    <p class="nota">Conceito independente criado pela Connect Alpha para demonstrar capacidade criativa e técnica. Não é um site oficial nem foi aprovado pela Red Bull; a marca aparece apenas como referência visual.</p>
+  <!-- SEÇÃO 2 -->
+  <section class="sec beyond" id="beyond" aria-labelledby="beyond-titulo">
+    <div class="beyond-texto">
+      <p class="kicker rv">01 — Attitude</p>
+      <h2 class="h2 rv" id="beyond-titulo">Beyond<br>the ordinary.</h2>
+      <p class="lead rv">Some people watch the horizon. Others cross it.</p>
+    </div>
+    <figure class="beyond-img rv rv-img">
+      <img src="assets/img/beyond-skydiver.jpg" width="720" height="1080" loading="lazy" decoding="async"
+           alt="Skydiver in a black suit in free fall above the clouds and a coastline at sunset">
+    </figure>
+  </section>
+
+  <!-- SEÇÃO 3 -->
+  <section class="sec action" id="action" aria-labelledby="action-titulo">
+    <header class="action-topo">
+      <p class="kicker rv">02 — Motion</p>
+      <h2 class="h2 rv" id="action-titulo">The world<br>of action.</h2>
+    </header>
+    <ul class="action-grade">
+      <li class="card rv rv-img">
+        <img src="assets/img/action-downhill.jpg" width="736" height="1313" loading="lazy" decoding="async"
+             alt="Mountain biker descending a steep slope in a cloud of dust, seen from above">
+        <span class="card-leg"><i>01</i>Downhill</span>
+      </li>
+      <li class="card rv rv-img">
+        <img src="assets/img/action-wake.jpg" width="736" height="1104" loading="lazy" decoding="async"
+             alt="Wakeboarder in mid-air with water spraying around the board">
+        <span class="card-leg"><i>02</i>Wake</span>
+      </li>
+      <li class="card rv rv-img">
+        <img src="assets/img/action-ski.jpg" width="640" height="1136" loading="lazy" decoding="async"
+             alt="Freestyle skier crossing skis in the air against a clear blue sky">
+        <span class="card-leg"><i>03</i>Freestyle</span>
+      </li>
+      <li class="card rv rv-img">
+        <img src="assets/img/action-race.jpg" width="736" height="1308" loading="lazy" decoding="async"
+             alt="Race track at sunset with a checkered flag and motion-blurred curbs">
+        <span class="card-leg"><i>04</i>Speed</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- SEÇÃO 4 -->
+  <section class="sec energy" id="energy" aria-labelledby="energy-titulo">
+    <div class="energy-texto">
+      <p class="kicker rv">03 — Fuel</p>
+      <h2 class="h2 rv" id="energy-titulo">The<br>energy.</h2>
+      <p class="lead rv">Cold. Sharp. Electric.</p>
+    </div>
+    <figure class="energy-can rv rv-img">
+      <img src="assets/img/energy-can.jpg" width="736" height="1104" loading="lazy" decoding="async"
+           alt="Red Bull can surrounded by a golden liquid splash against a black background">
+    </figure>
+    <figure class="energy-detalhe rv rv-img">
+      <img src="assets/img/energy-detail.jpg" width="640" height="1136" loading="lazy" decoding="async"
+           alt="Close-up of a wet Red Bull can with water splashing over it">
+      <figcaption>Detail</figcaption>
+    </figure>
+  </section>
+
+  <!-- SEÇÃO 5: encerramento -->
+  <section class="sec fecho" id="fecho" aria-labelledby="fecho-titulo">
+    <div class="fecho-bg" aria-hidden="true"></div>
+    <div class="fecho-conteudo">
+      <p class="kicker rv">04 — Your move</p>
+      <h2 class="h2 grande rv" id="fecho-titulo">Now,<br>go.</h2>
+      <p class="assinatura rv">A concept by <b>Connect Alpha</b></p>
+    </div>
   </section>
 </main>
+
+<footer class="rodape">
+  <nav class="rodape-nav" aria-label="Footer">
+    <a href="#cena" data-topo>Intro</a>
+    <a href="#beyond">Beyond</a>
+    <a href="#action">Action</a>
+    <a href="#energy">Energy</a>
+  </nav>
+  <p class="nota">Independent concept created by Connect Alpha to showcase creative and technical capability. Not affiliated with, sponsored by or endorsed by Red Bull; the brand and materials appear only as visual reference.</p>
+</footer>
 
 <noscript>
   <style>.carregando{display:none}.cena{height:100svh}.palco{position:relative}</style>
@@ -59,5 +145,6 @@
 <script src="vendor/gsap.min.js"></script>
 <script src="vendor/ScrollTrigger.min.js"></script>
 <script src="js/cena.js"></script>
+<script src="js/site.js"></script>
 </body>
 </html>

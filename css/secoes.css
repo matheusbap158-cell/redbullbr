@@ -1,0 +1,112 @@
+/* Seções 2 a 5 e navegação. A cena do vídeo (style.css) não é alterada. */
+:root{
+  --azul:#2A6BFF;
+  --azul-glow:rgba(42,107,255,.32);
+}
+
+/* ---------- acessibilidade e navegação ---------- */
+.pular{position:fixed;left:16px;top:-80px;z-index:50;padding:12px 18px;background:var(--branco);color:#04060b;font-weight:500;text-decoration:none;border-radius:2px}
+.pular:focus{top:16px;outline:2px solid var(--vermelho);outline-offset:3px}
+
+.topo{position:fixed;inset:0 0 auto 0;z-index:40;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 var(--margem);
+  background:linear-gradient(180deg,rgba(4,6,11,.88),rgba(4,6,11,0));
+  transform:translateY(-100%);visibility:hidden;transition:transform .4s ease,visibility 0s linear .4s}
+.topo.on{transform:none;visibility:visible;transition:transform .4s ease,visibility 0s}
+.topo a{color:var(--branco);text-decoration:none}
+.topo-marca{font-weight:800;font-size:.8125rem;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap}
+.topo-marca span{color:var(--vermelho)}
+.topo-nav{display:flex;gap:clamp(16px,3vw,40px)}
+.topo-nav a{font-size:.75rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--suave);padding:8px 0;border-bottom:1px solid transparent}
+.topo-nav a:hover{color:var(--branco);border-bottom-color:var(--vermelho)}
+.topo a:focus-visible,.rodape a:focus-visible{outline:2px solid var(--vermelho);outline-offset:4px}
+
+/* ---------- base das seções ---------- */
+.sec{position:relative;background:var(--fundo);padding:clamp(80px,14vh,170px) var(--margem)}
+.h2{margin:0;font-weight:800;text-transform:uppercase;letter-spacing:-.03em;line-height:.9;font-size:clamp(2.75rem,8.4vw,8.5rem)}
+.lead{margin:clamp(20px,3.4vh,40px) 0 0;max-width:26ch;font-size:clamp(1.0625rem,1.5vw,1.4rem);line-height:1.35;color:var(--suave)}
+.sec .kicker{margin-bottom:clamp(18px,3vh,34px)}
+figure{margin:0}
+.sec img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ---------- 2. Beyond the ordinary ---------- */
+.beyond{min-height:100vh;min-height:100svh;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,5vw,96px);align-items:center;
+  background:
+    radial-gradient(55% 60% at 82% 50%,var(--azul-glow),transparent 70%),
+    var(--fundo)}
+.beyond-img{justify-self:end;width:min(100%,clamp(300px,34vw,560px));aspect-ratio:2/3;max-height:84vh;max-height:84svh;overflow:hidden;position:relative}
+.beyond-img::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,6,11,.5),transparent 35%);pointer-events:none}
+
+/* ---------- 3. The world of action ---------- */
+.action{background:var(--fundo)}
+.action-topo{max-width:1200px}
+.action-grade{list-style:none;margin:clamp(40px,9vh,110px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,26px);align-items:start}
+.card{position:relative;overflow:hidden;aspect-ratio:3/4.4;background:#0a0d14}
+.card:nth-child(even){margin-top:clamp(28px,8vh,96px)}
+.card img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.card:hover img{transform:scale(1.04)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,6,11,.78),rgba(4,6,11,0) 42%);pointer-events:none}
+.card-leg{position:absolute;left:clamp(14px,1.4vw,22px);bottom:clamp(14px,1.4vw,22px);z-index:1;font-size:.75rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;display:flex;gap:12px;align-items:center}
+.card-leg i{font-style:normal;color:var(--vermelho);font-weight:800;letter-spacing:.1em}
+
+/* ---------- 4. The energy ---------- */
+.energy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr) minmax(0,.5fr);gap:clamp(20px,4vw,72px);align-items:center;min-height:100vh;min-height:100svh;
+  background:
+    radial-gradient(46% 52% at 50% 52%,var(--azul-glow),transparent 72%),
+    var(--fundo)}
+.energy-can{aspect-ratio:2/3;max-height:84vh;max-height:84svh;width:100%;overflow:hidden}
+.energy-detalhe{align-self:end}
+.energy-detalhe img{aspect-ratio:9/16;height:auto}
+.energy-detalhe figcaption{margin-top:12px;font-size:.6875rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--suave)}
+
+/* ---------- 5. Encerramento ---------- */
+.fecho{min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.fecho-bg{position:absolute;inset:0;background:
+  linear-gradient(180deg,var(--fundo) 0%,rgba(4,6,11,.35) 38%,rgba(4,6,11,.8) 100%),
+  url("../assets/img/close-texture.jpg") center/cover no-repeat;opacity:.95}
+.fecho-conteudo{position:relative;z-index:1}
+.h2.grande{font-size:clamp(4.2rem,17vw,16rem);line-height:.84}
+.assinatura{margin:clamp(24px,4vh,48px) 0 0;font-size:.8125rem;font-weight:500;letter-spacing:.26em;text-transform:uppercase;color:var(--suave)}
+.assinatura b{color:var(--branco);font-weight:800}
+.assinatura::before{content:"";display:inline-block;width:28px;height:2px;background:var(--vermelho);vertical-align:middle;margin-right:14px}
+
+/* ---------- rodapé ---------- */
+.rodape{background:var(--fundo);border-top:1px solid rgba(244,246,250,.1);padding:clamp(32px,5vh,56px) var(--margem) max(32px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:20px}
+.rodape-nav{display:flex;gap:clamp(18px,3vw,40px);flex-wrap:wrap}
+.rodape-nav a{color:var(--suave);text-decoration:none;font-size:.75rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;padding:6px 0}
+.rodape-nav a:hover{color:var(--branco)}
+.rodape .nota{margin:0;max-width:70ch;font-size:.8125rem;line-height:1.55;color:rgba(244,246,250,.62)}
+
+/* ---------- entradas na rolagem (só se o JS estiver ativo) ---------- */
+html.js .rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+html.js .rv.in{opacity:1;transform:none}
+html.js .rv-img.in img{animation:abre 1.1s cubic-bezier(.2,.7,.2,1) both}
+@keyframes abre{from{transform:scale(1.08)}to{transform:scale(1)}}
+
+/* ---------- telas menores ---------- */
+@media (max-width:900px){
+  .action-grade{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .card:nth-child(even){margin-top:clamp(20px,5vh,48px)}
+}
+@media (max-width:760px){
+  .beyond{grid-template-columns:1fr;gap:40px;min-height:0}
+  .beyond-img{justify-self:center;width:min(100%,420px);max-height:none}
+  .energy{grid-template-columns:1fr;gap:36px;min-height:0}
+  .energy-can{max-height:none;max-width:460px;justify-self:center}
+  .energy-detalhe{width:58%;justify-self:end;align-self:auto}
+  .topo-marca{font-size:.6875rem;letter-spacing:.16em}
+  .topo-nav{gap:14px}
+  .topo-nav a{letter-spacing:.14em;font-size:.6875rem}
+}
+
+@media (max-width:380px){
+  .topo-marca{letter-spacing:.1em}
+  .topo-nav{gap:10px}
+  .topo-nav a{letter-spacing:.1em}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html.js .rv{opacity:1;transform:none;transition:none}
+  html.js .rv-img.in img{animation:none}
+  .card img{transition:none}
+  .topo{transition:none}
+}
