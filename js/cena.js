@@ -74,14 +74,18 @@
   });
 
   // ---------- carregamento ----------
+  var liberado = false;
   var limite = setTimeout(function () {
-    if (video.readyState < 2) {
+    if (!liberado) {
+      // rede lenta: o texto precisa estar legível mesmo sem o vídeo, e a mensagem deixa de cobrir a tela
       carregando.classList.add('aviso');
       carregandoTxt.textContent = 'O vídeo está demorando para carregar…';
+      entrada();
     }
   }, 9000);
 
   function aoTerQuadro() {
+    liberado = true;
     clearTimeout(limite);
     carregando.classList.remove('aviso');
     esconderCarregando();
@@ -100,7 +104,10 @@
   video.addEventListener('progress', function () {
     if (duracao && video.buffered.length && video.buffered.end(video.buffered.length - 1) >= duracao - 0.15) aoTerQuadro();
   });
-  setTimeout(function () { if (video.readyState >= 2) aoTerQuadro(); }, 12000); // rede lenta: libera mesmo assim
+  // rede lenta, ou navegador que só carrega o vídeo depois de um toque (iOS): com os metadados já dá para liberar
+  setTimeout(function () { if (!liberado && video.readyState >= 1) aoTerQuadro(); }, 12000);
+  // nada chegou: avisa e deixa a página utilizável, sem prender o visitante na tela de carregamento
+  setTimeout(function () { if (!liberado) aoFalhar(); }, 25000);
   video.addEventListener('error', aoFalhar);
   // com mais de uma fonte, só a última falhar significa que nada carregou
   var fontes = video.querySelectorAll('source');

@@ -46,6 +46,14 @@
   video.addEventListener('progress', porcentagem);
   video.addEventListener('loadedmetadata', porcentagem);
 
+  // ---------- a faixa de palavras só anima enquanto está na tela ----------
+  var faixa = document.querySelector('.faixa-trilha');
+  if (faixa && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (itens) {
+      faixa.style.animationPlayState = itens[0].isIntersecting ? 'running' : 'paused';
+    }).observe(faixa.parentNode);
+  }
+
   // ---------- menu: aparece só depois da cena do vídeo ----------
   var limite = 0, ticking = false, visivel = false;
   function medir() { limite = cena.offsetTop + cena.offsetHeight - window.innerHeight * 1.35; }
