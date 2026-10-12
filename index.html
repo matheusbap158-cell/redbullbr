@@ -1,13 +1,20 @@
 <!doctype html>
-<html lang="en" translate="no">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="dark">
-<meta name="google" content="notranslate">
 <meta name="theme-color" content="#04060b">
-<title>Unleash the Impossible · Concept by Connect Alpha</title>
-<meta name="description" content="Conceito independente da Connect Alpha: uma cena cinematográfica com vídeo controlado pela rolagem.">
+<title>Liberte o impossível · Conceito Connect Alpha</title>
+<meta name="description" content="Conceito independente da Connect Alpha: uma experiência cinematográfica em que o vídeo avança e volta com a rolagem. Veja o que a gente cria para a sua marca.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="Liberte o impossível · Conceito Connect Alpha">
+<meta property="og:description" content="Uma experiência cinematográfica controlada pela rolagem, criada pela Connect Alpha.">
+<meta property="og:image" content="https://redbullbr.vercel.app/assets/poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preload" as="image" href="assets/poster.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;800&display=swap">
@@ -16,14 +23,15 @@
 </head>
 <body>
 <script>document.documentElement.classList.add('js')</script>
-<a class="pular" href="#beyond">Skip to content</a>
+<a class="pular" href="#atitude">Pular para o conteúdo</a>
 
 <header class="topo" id="topo">
   <a class="topo-marca" href="#cena" data-topo>Connect <span>Alpha</span></a>
-  <nav class="topo-nav" aria-label="Sections">
-    <a href="#beyond">Beyond</a>
-    <a href="#action">Action</a>
-    <a href="#energy">Energy</a>
+  <nav class="topo-nav" aria-label="Seções">
+    <a class="topo-sec" href="#atitude">Atitude</a>
+    <a class="topo-sec" href="#acao">Ação</a>
+    <a class="topo-sec" href="#energia">Energia</a>
+    <a class="topo-cta" href="#conecta">Fale com a gente</a>
   </nav>
 </header>
 
@@ -32,20 +40,30 @@
   <section class="cena" id="cena" aria-labelledby="titulo">
     <div class="palco" id="palco">
       <video id="video" class="video" muted playsinline preload="auto" tabindex="-1" aria-hidden="true" poster="assets/poster.jpg">
+        <!-- cópia com todos os quadros-chave (rolagem sem engasgo); o original fica de reserva -->
+        <source src="assets/video/lata-scrub.mp4" type="video/mp4">
         <source src="V%C3%ADdeo/Red_Bull_can_in_studio_20261012075900.mp4" type="video/mp4">
       </video>
       <div class="vinheta" aria-hidden="true"></div>
 
       <div class="texto" id="texto">
-        <p class="kicker" id="kicker">Connect Alpha Presents</p>
-        <h1 class="titulo" id="titulo"><span class="ln"><span>Unleash</span></span> <span class="ln"><span>the</span></span> <span class="ln"><span>Impossible.</span></span></h1>
-        <p class="aux" id="aux">Energy in motion.</p>
+        <p class="kicker" id="kicker">Connect Alpha apresenta</p>
+        <h1 class="titulo" id="titulo"><span class="ln"><span>Liberte</span></span> <span class="ln"><span>o</span></span> <span class="ln"><span>impossível.</span></span></h1>
+        <p class="aux" id="aux">Energia em movimento.</p>
+      </div>
+
+      <div class="beats">
+        <p class="beat beat-a" id="beat-a"><span class="beat-n">01</span>Antes do salto,<br>o silêncio.</p>
+        <p class="beat beat-b" id="beat-b"><span class="beat-n">02</span>Depois dele,<br>só movimento.</p>
+        <p class="beat beat-c" id="beat-c"><span class="beat-n">03</span>Pronto para<br>o impossível.</p>
       </div>
 
       <div class="indicador" id="indicador" aria-hidden="true">
-        <span>Scroll to experience</span>
+        <span>Role para viver a experiência</span>
         <i></i>
       </div>
+
+      <div class="trilho" aria-hidden="true"><i id="trilho-barra"></i></div>
 
       <button class="reproduzir" id="reproduzir" type="button" hidden>Reproduzir vídeo</button>
 
@@ -56,64 +74,78 @@
     </div>
   </section>
 
+  <!-- faixa de palavras -->
+  <div class="faixa" aria-hidden="true">
+    <div class="faixa-trilha">
+      <span>Energia</span><span>Movimento</span><span>Superação</span><span>Adrenalina</span>
+      <span>Energia</span><span>Movimento</span><span>Superação</span><span>Adrenalina</span>
+    </div>
+  </div>
+
   <!-- SEÇÃO 2 -->
-  <section class="sec beyond" id="beyond" aria-labelledby="beyond-titulo">
+  <section class="sec beyond" id="atitude" aria-labelledby="atitude-titulo">
+    <p class="palavra-fundo" aria-hidden="true">Impossível</p>
     <div class="beyond-texto">
-      <p class="kicker rv">01 — Attitude</p>
-      <h2 class="h2 rv" id="beyond-titulo">Beyond<br>the ordinary.</h2>
-      <p class="lead rv">Some people watch the horizon. Others cross it.</p>
+      <p class="kicker rv">01 — Atitude</p>
+      <h2 class="h2 rv" id="atitude-titulo">Além do<br>ordinário.</h2>
+      <p class="lead rv">Há quem olhe para o horizonte. E há quem o atravesse.</p>
     </div>
     <figure class="beyond-img rv rv-img">
-      <img src="assets/img/beyond-skydiver.jpg" width="720" height="1080" loading="lazy" decoding="async"
-           alt="Skydiver in a black suit in free fall above the clouds and a coastline at sunset">
+      <div class="par"><img src="assets/img/beyond-skydiver.jpg" width="720" height="1080" loading="lazy" decoding="async"
+           alt="Paraquedista de roupa preta em queda livre sobre as nuvens e uma costa ao pôr do sol"></div>
     </figure>
   </section>
 
   <!-- SEÇÃO 3 -->
-  <section class="sec action" id="action" aria-labelledby="action-titulo">
-    <header class="action-topo">
-      <p class="kicker rv">02 — Motion</p>
-      <h2 class="h2 rv" id="action-titulo">The world<br>of action.</h2>
-    </header>
-    <ul class="action-grade">
-      <li class="card rv rv-img">
-        <img src="assets/img/action-downhill.jpg" width="736" height="1313" loading="lazy" decoding="async"
-             alt="Mountain biker descending a steep slope in a cloud of dust, seen from above">
-        <span class="card-leg"><i>01</i>Downhill</span>
-      </li>
-      <li class="card rv rv-img">
-        <img src="assets/img/action-wake.jpg" width="736" height="1104" loading="lazy" decoding="async"
-             alt="Wakeboarder in mid-air with water spraying around the board">
-        <span class="card-leg"><i>02</i>Wake</span>
-      </li>
-      <li class="card rv rv-img">
-        <img src="assets/img/action-ski.jpg" width="640" height="1136" loading="lazy" decoding="async"
-             alt="Freestyle skier crossing skis in the air against a clear blue sky">
-        <span class="card-leg"><i>03</i>Freestyle</span>
-      </li>
-      <li class="card rv rv-img">
-        <img src="assets/img/action-race.jpg" width="736" height="1308" loading="lazy" decoding="async"
-             alt="Race track at sunset with a checkered flag and motion-blurred curbs">
-        <span class="card-leg"><i>04</i>Speed</span>
-      </li>
-    </ul>
+  <section class="sec action" id="acao" aria-labelledby="acao-titulo">
+    <div class="acao-palco">
+      <p class="acao-contador" id="acao-contador" aria-hidden="true"><b>01</b> / 04</p>
+      <div class="acao-trilha" id="acao-trilha">
+      <header class="action-topo">
+        <p class="kicker rv">02 — Movimento</p>
+        <h2 class="h2 rv" id="acao-titulo">O mundo<br>da ação.</h2>
+      </header>
+      <ul class="action-grade" id="acao-grade">
+        <li class="card rv rv-img">
+          <img src="assets/img/action-downhill.jpg" width="736" height="1313" loading="lazy" decoding="async"
+               alt="Ciclista descendo uma encosta íngreme em meio a uma nuvem de poeira, visto de cima">
+          <span class="card-leg"><i>01</i>Downhill</span>
+        </li>
+        <li class="card rv rv-img">
+          <img src="assets/img/action-wake.jpg" width="736" height="1104" loading="lazy" decoding="async"
+               alt="Wakeboarder no ar com a água respingando ao redor da prancha">
+          <span class="card-leg"><i>02</i>Wake</span>
+        </li>
+        <li class="card rv rv-img">
+          <img src="assets/img/action-ski.jpg" width="640" height="1136" loading="lazy" decoding="async"
+               alt="Esquiador de estilo livre cruzando os esquis no ar contra um céu azul">
+          <span class="card-leg"><i>03</i>Freestyle</span>
+        </li>
+        <li class="card rv rv-img">
+          <img src="assets/img/action-race.jpg" width="736" height="1308" loading="lazy" decoding="async"
+               alt="Pista de corrida ao pôr do sol com bandeira quadriculada e zebras em movimento">
+          <span class="card-leg"><i>04</i>Velocidade</span>
+        </li>
+      </ul>
+      </div>
+    </div>
   </section>
 
   <!-- SEÇÃO 4 -->
-  <section class="sec energy" id="energy" aria-labelledby="energy-titulo">
+  <section class="sec energy" id="energia" aria-labelledby="energia-titulo">
     <div class="energy-texto">
-      <p class="kicker rv">03 — Fuel</p>
-      <h2 class="h2 rv" id="energy-titulo">The<br>energy.</h2>
-      <p class="lead rv">Cold. Sharp. Electric.</p>
+      <p class="kicker rv">03 — Combustível</p>
+      <h2 class="h2 rv" id="energia-titulo">A<br>energia.</h2>
+      <p class="lead rv">Gelada. Afiada. Elétrica.</p>
     </div>
-    <figure class="energy-can rv rv-img">
-      <img src="assets/img/energy-can.jpg" width="736" height="1104" loading="lazy" decoding="async"
-           alt="Red Bull can surrounded by a golden liquid splash against a black background">
+    <figure class="energy-can rv rv-img" id="lata-tilt">
+      <div class="par"><img src="assets/img/energy-can.jpg" width="736" height="1104" loading="lazy" decoding="async"
+           alt="Lata de Red Bull cercada por um respingo de líquido dourado sobre fundo preto"></div>
     </figure>
     <figure class="energy-detalhe rv rv-img">
       <img src="assets/img/energy-detail.jpg" width="640" height="1136" loading="lazy" decoding="async"
-           alt="Close-up of a wet Red Bull can with water splashing over it">
-      <figcaption>Detail</figcaption>
+           alt="Detalhe de uma lata de Red Bull molhada, com água respingando">
+      <figcaption>Detalhe</figcaption>
     </figure>
   </section>
 
@@ -121,25 +153,51 @@
   <section class="sec fecho" id="fecho" aria-labelledby="fecho-titulo">
     <div class="fecho-bg" aria-hidden="true"></div>
     <div class="fecho-conteudo">
-      <p class="kicker rv">04 — Your move</p>
-      <h2 class="h2 grande rv" id="fecho-titulo">Now,<br>go.</h2>
-      <p class="assinatura rv">A concept by <b>Connect Alpha</b></p>
+      <p class="kicker rv">04 — Sua vez</p>
+      <h2 class="h2 grande rv" id="fecho-titulo">Agora,<br>vai.</h2>
+      <p class="assinatura rv">Um conceito da <b>Connect Alpha</b></p>
     </div>
+  </section>
+
+  <!-- POR TRÁS DA CENA: convite para a Connect Alpha -->
+  <section class="sec conecta" id="conecta" aria-labelledby="conecta-titulo">
+    <div class="conecta-grade">
+      <div class="conecta-texto">
+        <p class="kicker rv">05 — Por trás da cena</p>
+        <h2 class="h2 medio rv" id="conecta-titulo">Isto é um conceito.<br>O seu pode ser real.</h2>
+        <p class="lead rv">A Connect Alpha cria sites, campanhas e presença digital que as pessoas sentem, não só veem. Conte o que você quer provocar e a gente desenha o caminho.</p>
+        <div class="conecta-cta rv">
+          <a class="btn-wa" href="https://wa.me/5535998872633?text=Ol%C3%A1!%20Vi%20o%20conceito%20que%20a%20Connect%20Alpha%20criou%20e%20quero%20um%20site%20assim%20para%20a%20minha%20marca." target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 0 1-12.3 7.6L3.5 20.5l1-4.4A8.5 8.5 0 1 1 20.5 12z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>
+            Quero um site assim
+          </a>
+          <a class="btn-ig" href="https://instagram.com/connectalpha.ia" target="_blank" rel="noopener">@connectalpha.ia</a>
+        </div>
+      </div>
+      <ul class="conecta-lista">
+        <li class="rv"><b>Movimento sob o controle de quem rola</b><span>O vídeo avança e volta com a rolagem, com toque, teclado e uma versão para quem prefere menos movimento.</span></li>
+        <li class="rv"><b>Leve de verdade</b><span>Imagens otimizadas, carregamento sob demanda e só as bibliotecas necessárias.</span></li>
+        <li class="rv"><b>Pensado para o celular</b><span>Composição própria para telas pequenas, não só uma versão encolhida do desktop.</span></li>
+      </ul>
+    </div>
+    <p class="servicos rv">Sites · Tráfego pago · Social media · Automação de WhatsApp</p>
   </section>
 </main>
 
 <footer class="rodape">
-  <nav class="rodape-nav" aria-label="Footer">
-    <a href="#cena" data-topo>Intro</a>
-    <a href="#beyond">Beyond</a>
-    <a href="#action">Action</a>
-    <a href="#energy">Energy</a>
+  <img class="rodape-logo" src="assets/connect-alpha-logo.jpg" width="760" height="251" loading="lazy" decoding="async" alt="Connect Alpha — agência de marketing">
+  <nav class="rodape-nav" aria-label="Rodapé">
+    <a href="#cena" data-topo>Início</a>
+    <a href="#atitude">Atitude</a>
+    <a href="#acao">Ação</a>
+    <a href="#energia">Energia</a>
+    <a href="#conecta">Contato</a>
   </nav>
-  <p class="nota">Independent concept created by Connect Alpha to showcase creative and technical capability. Not affiliated with, sponsored by or endorsed by Red Bull; the brand and materials appear only as visual reference.</p>
+  <p class="nota">Conceito independente criado pela Connect Alpha para demonstrar capacidade criativa e técnica. Sem afiliação, patrocínio ou aprovação da Red Bull; a marca e os materiais aparecem apenas como referência visual.</p>
 </footer>
 
 <noscript>
-  <style>.carregando{display:none}.cena{height:100svh}.palco{position:relative}</style>
+  <style>.carregando{display:none}.cena{height:100svh}.palco{position:relative}.beat,.trilho{display:none}</style>
 </noscript>
 
 <script src="vendor/gsap.min.js"></script>

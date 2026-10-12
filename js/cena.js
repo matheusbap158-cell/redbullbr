@@ -94,11 +94,17 @@
     carregandoTxt.textContent = 'Não foi possível carregar o vídeo.';
     modoSimples('erro');
   }
-  video.addEventListener('loadeddata', aoTerQuadro);
+  // só libera a cena quando o vídeo todo está pronto (a cópia all-intra pesa ~4 MB): sem isso, rolar rápido
+  // logo no início faz buscas em trechos que ainda não chegaram e o vídeo "atrasa"
+  video.addEventListener('canplaythrough', aoTerQuadro);
+  video.addEventListener('progress', function () {
+    if (duracao && video.buffered.length && video.buffered.end(video.buffered.length - 1) >= duracao - 0.15) aoTerQuadro();
+  });
+  setTimeout(function () { if (video.readyState >= 2) aoTerQuadro(); }, 12000); // rede lenta: libera mesmo assim
   video.addEventListener('error', aoFalhar);
-  if (video.querySelector('source')) {
-    video.querySelector('source').addEventListener('error', aoFalhar);
-  }
+  // com mais de uma fonte, só a última falhar significa que nada carregou
+  var fontes = video.querySelectorAll('source');
+  if (fontes.length) fontes[fontes.length - 1].addEventListener('error', aoFalhar);
 
   // ---------- sincronia com a rolagem ----------
   function criarGatilho() {
@@ -166,7 +172,7 @@
   }
   if (video.readyState >= 1) aoTerMetadados();
   else video.addEventListener('loadedmetadata', aoTerMetadados, { once: true });
-  if (video.readyState >= 2) aoTerQuadro();
+  if (video.readyState >= 4) aoTerQuadro();
 
   // iOS/Android: o vídeo só aceita busca depois de um gesto; faz um play/pause imediato
   function destravar() {
